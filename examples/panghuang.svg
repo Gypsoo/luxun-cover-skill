@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="920" viewBox="0 0 640 920" role="img" xml:lang="zh-Hans">
+  <title>彷徨 · 鲁迅</title>
+  <desc>彷徨 / 鲁迅。致敬式书衣，not a facsimile。几何纹样为程序原创，不是陶元庆原作的复刻或扫描。 书名与著者已用 Noto Serif CJK SC 转成轮廓路径，打开 SVG 或导出 PNG 都不依赖查看器字体。字体文件未嵌入。</desc>
+  <!-- homage layout. original geometry. not a facsimile of a Tao Yuanqing cover. -->
+  <rect x="0" y="0" width="640" height="920" fill="#E2AC45"/>
+  <rect x="0" y="0" width="640" height="62" fill="#C4482A"/>
+  <rect x="0" y="882" width="640" height="38" fill="#C4482A"/>
+  <rect x="30.58" y="609.42" width="260.29" height="292.58" fill="none" stroke="#1C140F" stroke-width="8"/>
+  <rect x="30.58" y="609.42" width="104.12" height="292.58" fill="#1C140F"/>
+  <rect x="143.7" y="618.42" width="138.18" height="81.48" fill="none" stroke="#1C140F" stroke-width="2.4"/>
+  <rect x="143.7" y="717.89" width="138.18" height="78.55" fill="none" stroke="#1C140F" stroke-width="2.4"/>
+  <rect x="143.7" y="814.45" width="138.18" height="78.55" fill="none" stroke="#1C140F" stroke-width="2.4"/>
+  <circle cx="326.5" cy="203.6" r="16" fill="#C4482A"/>
+  <line x1="326.5" y1="183.12" x2="326.5" y2="174.32" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="333.5" y1="184.35" x2="336.51" y2="176.08" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="339.66" y1="187.91" x2="345.32" y2="181.17" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="344.23" y1="193.36" x2="351.85" y2="188.96" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="346.66" y1="200.04" x2="355.33" y2="198.51" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="346.66" y1="207.15" x2="355.33" y2="208.68" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="344.23" y1="213.84" x2="351.85" y2="218.24" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="339.66" y1="219.28" x2="345.32" y2="226.03" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="333.5" y1="222.84" x2="336.51" y2="231.11" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="326.5" y1="224.08" x2="326.5" y2="232.88" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="319.49" y1="222.84" x2="316.48" y2="231.11" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="313.33" y1="219.28" x2="307.67" y2="226.03" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="308.76" y1="213.84" x2="301.14" y2="218.24" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="306.33" y1="207.15" x2="297.66" y2="208.68" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="306.33" y1="200.04" x2="297.66" y2="198.51" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="308.76" y1="193.36" x2="301.14" y2="188.96" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="313.33" y1="187.91" x2="307.67" y2="181.17" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="319.49" y1="184.35" x2="316.48" y2="176.08" stroke="#C4482A" stroke-width="1.6" stroke-linecap="butt" fill="none"/>
+  <line x1="82.75" y1="359.28" x2="203.81" y2="359.28" stroke="#1C140F" stroke-width="1.5" stroke-linecap="butt" fill="none"/>
+  <line x1="82.75" y1="367.28" x2="203.81" y2="367.28" stroke="#1C140F" stroke-width="1.5" stroke-linecap="butt" fill="none"/>
+  <line x1="82.75" y1="375.28" x2="203.81" y2="375.28" stroke="#1C140F" stroke-width="1.5" stroke-linecap="butt" fill="none"/>
+  <line x1="82.75" y1="383.28" x2="203.81" y2="383.28" stroke="#1C140F" stroke-width="1.5" stroke-linecap="butt" fill="none"/>
+  <!-- outlined with Noto Serif CJK SC (/usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc #2). glyph paths only; the font file is not embedded. -->
+  <g data-char="彷" transform="translate(508 181.92) scale(0.084 -0.084)">
+  <path d="M549 836 539 828C586 792 633 726 638 669C708 615 766 775 549 836ZM366 781 275 833C229 753 134 640 45 566L56 553C163 613 268 705 328 772C350 767 360 771 366 781ZM888 700 844 642H346L354 612H517C514 333 484 113 301 -70L312 -82C489 45 552 210 576 416H805C796 187 777 48 748 21C738 12 729 10 711 10C692 10 629 15 591 19L590 1C625 -5 661 -14 675 -25C688 -36 691 -55 691 -74C732 -74 769 -62 795 -37C840 7 863 149 872 408C893 410 905 415 912 423L835 487L795 446H579C584 499 587 554 588 612H943C957 612 967 617 969 628C938 659 888 700 888 700ZM288 446 252 459C286 499 315 538 338 572C362 567 371 572 377 583L282 631C235 528 135 378 35 278L47 266C99 303 149 348 194 395V-79H206C232 -79 257 -62 258 -55V427C276 430 285 436 288 446Z" fill="#1C140F" fill-rule="nonzero"/>
+  </g>
+  <g data-char="徨" transform="translate(508 289.44) scale(0.084 -0.084)">
+  <path d="M246 837C204 762 118 646 39 570L51 559C147 621 244 712 300 777C322 772 331 776 337 786ZM268 638C223 536 130 386 37 286L48 274C92 308 135 348 174 389V-79H186C211 -79 238 -61 239 -56V434C254 437 264 444 268 453L239 464C273 505 302 546 324 580C348 575 357 580 363 591ZM794 554V439H458V554ZM794 583H458V693H794ZM394 723V353H405C432 353 458 369 458 374V410H794V369H804C826 369 858 384 860 391V681C880 685 897 693 904 701L821 764L784 723H581C606 748 633 776 651 799C671 799 683 808 687 821L579 842C571 808 560 760 549 723H463L394 754ZM297 -21 305 -50H946C959 -50 969 -45 972 -34C939 -4 887 38 887 38L840 -21H656V122H898C911 122 921 127 924 138C892 168 839 209 839 209L793 152H656V286H922C936 286 945 291 948 302C915 332 864 373 864 373L818 315H324L332 286H591V152H350L358 122H591V-21Z" fill="#1C140F" fill-rule="nonzero"/>
+  </g>
+  <g data-char="鲁" transform="translate(563 381.8) scale(0.029 -0.029)">
+  <path d="M872 401 822 338H45L54 309H936C950 309 958 314 961 325C927 357 872 401 872 401ZM244 664C275 688 303 713 329 738H591C565 711 529 678 497 655H265ZM388 801C416 802 428 808 431 819L322 841C269 750 153 628 33 555L43 542C95 564 145 593 191 625V354H202C232 354 253 374 253 380V400H750V372H760C782 372 812 389 813 397V619C829 621 843 628 848 635L775 691L742 655H530C584 676 642 708 682 732C702 732 715 734 723 741L650 809L607 768H359ZM253 626H468V542H253ZM253 512H468V429H253ZM750 626V542H530V626ZM750 512V429H530V512ZM722 220V131H286V220ZM286 -56V-21H722V-73H732C754 -73 786 -58 787 -52V210C805 213 820 221 826 228L748 288L713 249H292L221 282V-78H231C259 -78 286 -62 286 -56ZM286 101H722V9H286Z" fill="#1C140F" fill-rule="nonzero"/>
+  </g>
+  <g data-char="迅" transform="translate(563 418.92) scale(0.029 -0.029)">
+  <path d="M104 821 92 814C137 759 196 672 213 607C284 556 335 703 104 821ZM665 517 622 462H554V737H762C761 474 768 189 869 91C898 60 935 41 956 63C967 73 961 91 943 121L957 264L944 266C936 231 926 197 916 164C912 152 908 150 899 160C826 234 817 527 826 724C847 727 862 733 868 740L791 807L753 766H321L330 737H491V462H322L330 432H491V60H501C534 60 554 76 554 81V432H717C730 432 740 437 742 448C713 477 665 517 665 517ZM183 129C143 98 82 41 41 10L101 -64C109 -58 111 -50 106 -41C136 6 189 77 209 109C220 122 228 124 241 109C335 -9 431 -45 621 -45C728 -45 820 -45 912 -45C915 -15 932 5 963 11V24C846 19 754 19 641 19C456 19 347 38 256 137C251 142 248 145 244 146V463C272 467 286 474 293 482L207 553L169 502H43L48 473H183Z" fill="#1C140F" fill-rule="nonzero"/>
+  </g>
+  <rect x="539.92" y="328.08" width="52.08" height="3" fill="#C4482A"/>
+</svg>

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "luxun-cover-skill"
+version = "0.1.0"
+description = "Agent skill and local SVG generator for Republican-era Chinese book covers in the Tao Yuanqing geometric idiom."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Gypsoo" }]
+keywords = ["svg", "book-cover", "lu-xun", "tao-yuanqing", "agent-skill"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Artistic Software",
+]
+dependencies = ["fonttools>=4.51"]
+
+[project.optional-dependencies]
+png = ["cairosvg>=2.7"]
+
+[project.scripts]
+luxun-cover = "luxun_cover.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
