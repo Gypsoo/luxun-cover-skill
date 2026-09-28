@@ -15,6 +15,24 @@ Around 1926, Tao Yuanqing designed covers for Lu Xun’s books. 《彷徨》 is 
 
 The first-edition cover of 《呐喊》 was designed by Lu Xun. The cover of 《野草》 was designed by Sun Fuxi. The examples below use those titles only. The layouts are new.
 
+## People
+
+**Lu Xun** (鲁迅, the pen name of Zhou Shuren 周树人, 1881–1936) was from Shaoxing, Zhejiang, and a leading writer of modern Chinese literature. The story collections 《呐喊》 and 《彷徨》 and the prose-poem collection 《野草》 all appeared in the 1920s. He also designed his own books. The 1923 first-edition cover of 《呐喊》 is his: a deep-red ground, one black block, the title and author in intaglio (阴文). He later asked Tao Yuanqing to design covers. When a reprint’s colors drifted, he treated it as seriously as a text rewritten until it no longer made sense.
+
+**Tao Yuanqing** (陶元庆, 1893–1929), courtesy name Xuanqing (字璇卿), was a painter, also from Shaoxing. Around 1926 he designed covers for Lu Xun’s books. That is the line this tool follows. 《彷徨》 was first published in August 1926 by Beixin (北新书局), as one of the 乌合丛书. Tao painted the cover: three figures seated together, facing the setting sun, the title set to one side, bands at the top and bottom. Lu Xun wrote about Tao’s exhibition and held that the paintings met the temper of the time without losing China’s own spirit. The tool keeps the grammar — geometric ornament, warm paper, few colors, wide margins — and does not redraw that picture.
+
+**Sun Fuxi** (孙福熙, 1898–1962), courtesy name Chuntai (字春苔), was a painter who also wrote. He was the younger brother of Sun Fuyuan (孙伏园) and had studied painting in France. The 1927 first-edition cover of 《野草》 is his, close to a landscape: cloud, distant hills, and grass. That is not Tao Yuanqing’s geometric cover, and this generator does not use it as a template.
+
+Three books that are often named together have three different cover designers:
+
+| Book | Cover |
+| --- | --- |
+| 《呐喊》 (first edition, 1923) | Designed by Lu Xun |
+| 《彷徨》 (1926) | Tao Yuanqing |
+| 《野草》 (1927) | Sun Fuxi |
+
+Details are in [docs/references.md](docs/references.md).
+
 ## Install
 
 Python 3.10 or newer. The distribution name is `luxun-cover-skill`. The command is `luxun-cover`.
