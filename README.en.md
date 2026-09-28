@@ -105,9 +105,9 @@ luxun-cover --title 彷徨 --out panghuang.svg --png
 
 <table width="100%">
 <tr>
-<td width="33%" align="center"><img src="examples/panghuang.png" alt="彷徨" width="260"></td>
-<td width="33%" align="center"><img src="examples/nahan.png" alt="呐喊" width="260"></td>
-<td width="33%" align="center"><img src="examples/yecao.png" alt="野草" width="260"></td>
+<td width="33%" align="center"><img src="examples/panghuang.png" alt="彷徨" width="100%"></td>
+<td width="33%" align="center"><img src="examples/nahan.png" alt="呐喊" width="100%"></td>
+<td width="33%" align="center"><img src="examples/yecao.png" alt="野草" width="100%"></td>
 </tr>
 <tr>
 <td align="center"><b>彷徨</b><br>ochre · lattice</td>
