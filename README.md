@@ -103,43 +103,39 @@ luxun-cover --title 彷徨 --out panghuang.svg --png
 
 ## 示例
 
-下面三张都是本工具画的致敬构图，不是历史封面的扫描或复刻。预览 PNG 只为了在本页能看见；以 SVG 为准。
+<table width="100%">
+<tr>
+<td width="33%" align="center"><img src="examples/panghuang.png" alt="彷徨" width="260"></td>
+<td width="33%" align="center"><img src="examples/nahan.png" alt="呐喊" width="260"></td>
+<td width="33%" align="center"><img src="examples/yecao.png" alt="野草" width="260"></td>
+</tr>
+<tr>
+<td align="center"><b>彷徨</b><br>赭黄 · 窗格</td>
+<td align="center"><b>呐喊</b><br>纯墨 · 云头</td>
+<td align="center"><b>野草</b><br>暗蓝 · 角框</td>
+</tr>
+</table>
 
-### 彷徨
+致敬构图，不是原封面。《呐喊》初版是鲁迅自作，《野草》是孙福熙。图为 PNG 预览，以 SVG 为准。
 
-赭黄纸，朱红书口，窗格在左下，书名直排在右上。
+<details>
+<summary>重新生成</summary>
 
-![彷徨致敬构图](examples/panghuang.png)
+《呐喊》这张不是 1923 年鲁迅自作的红地黑块初版。《野草》这张不是孙福熙的山水。
 
 ```bash
 luxun-cover --title 彷徨 --author 鲁迅 --palette ochre --motif lattice --layout vertical --seed 0 --out examples/panghuang.svg
-```
-
-### 呐喊
-
-纯墨。上端一条云头边饰，书名落在下方双线之间。这不是 1923 年那张红地黑块的初版封面。初版封面是鲁迅自己做的。
-
-![呐喊致敬构图](examples/nahan.png)
-
-```bash
 luxun-cover --title 呐喊 --author 鲁迅 --palette ink --motif cloud --layout horizontal --seed 1 --out examples/nahan.svg
-```
-
-### 野草
-
-暗蓝书口，角框，书名直排。这不是孙福熙那张山水封面。
-
-![野草致敬构图](examples/yecao.png)
-
-```bash
 luxun-cover --title 野草 --author 鲁迅 --palette indigo --motif frame --layout vertical --seed 1 --out examples/yecao.svg
 ```
 
-回纹可以这样试：
+回纹：
 
 ```bash
 luxun-cover --title 呐喊 --palette cinnabar --motif meander --layout horizontal --seed 1 --out nahan-meander.svg
 ```
+
+</details>
 
 ## 给 Agent
 

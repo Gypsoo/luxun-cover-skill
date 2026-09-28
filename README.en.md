@@ -103,35 +103,29 @@ luxun-cover --title 彷徨 --out panghuang.svg --png
 
 ## Examples
 
-The three pictures below are homage layouts drawn by this tool. They are not scans or redrawings of historical covers. The PNG files are previews so this page can show them. The SVG is the reference.
+<table width="100%">
+<tr>
+<td width="33%" align="center"><img src="examples/panghuang.png" alt="彷徨" width="260"></td>
+<td width="33%" align="center"><img src="examples/nahan.png" alt="呐喊" width="260"></td>
+<td width="33%" align="center"><img src="examples/yecao.png" alt="野草" width="260"></td>
+</tr>
+<tr>
+<td align="center"><b>彷徨</b><br>ochre · lattice</td>
+<td align="center"><b>呐喊</b><br>ink · cloud</td>
+<td align="center"><b>野草</b><br>indigo · frame</td>
+</tr>
+</table>
 
-### 彷徨
+Homage layouts, not the original covers. The first edition of 《呐喊》 is Lu Xun’s; 《野草》 is Sun Fuxi’s. The PNG is a preview; the SVG is the reference.
 
-Ochre paper, vermilion bands at the top and bottom, a lattice at the lower left, the title set vertically at the upper right.
+<details>
+<summary>Regenerate</summary>
 
-![homage layout, 彷徨](examples/panghuang.png)
+The 《呐喊》 sample is not Lu Xun’s 1923 first edition (red ground, one black block). The 《野草》 sample is not Sun Fuxi’s landscape.
 
 ```bash
 luxun-cover --title 彷徨 --author 鲁迅 --palette ochre --motif lattice --layout vertical --seed 0 --out examples/panghuang.svg
-```
-
-### 呐喊
-
-Ink only. A cloud-head border along the top; the title sits between a pair of rules below. This is not the 1923 first-edition cover (red ground, one black block). Lu Xun designed that cover himself.
-
-![homage layout, 呐喊](examples/nahan.png)
-
-```bash
 luxun-cover --title 呐喊 --author 鲁迅 --palette ink --motif cloud --layout horizontal --seed 1 --out examples/nahan.svg
-```
-
-### 野草
-
-Dull indigo bands, a corner frame, the title set vertically. This is not the landscape cover by Sun Fuxi.
-
-![homage layout, 野草](examples/yecao.png)
-
-```bash
 luxun-cover --title 野草 --author 鲁迅 --palette indigo --motif frame --layout vertical --seed 1 --out examples/yecao.svg
 ```
 
@@ -140,6 +134,8 @@ A meander:
 ```bash
 luxun-cover --title 呐喊 --palette cinnabar --motif meander --layout horizontal --seed 1 --out nahan-meander.svg
 ```
+
+</details>
 
 ## For agents
 
