@@ -5,17 +5,25 @@
 ## 演示
 
 <p align="center">
-  <img src="assets/demo/collage.png" alt="从左到右：彷徨，赭黄纸、窗格压在下书口；呐喊，近白的纸、上沿一排云头；野草，暗蓝书口、纸上的角框。" width="840">
+  <img src="docs/demo/covers/originals/panghuang.jpg" alt="陶元庆画的彷徨封面，1926 年。" width="180">
+  <img src="docs/demo/covers/originals/nahan.jpg" alt="国家图书馆藏 1930 年北新书局呐喊封面，鲁迅设计。" width="180">
+  <img src="docs/demo/covers/originals/yecao.jpg" alt="孙福熙画的野草封面，1927 年。" width="180">
 </p>
 
-从左到右：《彷徨》赭黄纸，窗格压在下书口；《呐喊》近白的纸，上沿一排云头；《野草》暗蓝书口，角框留在纸上。《呐喊》初版封面是鲁迅自己做的，《彷徨》是陶元庆画的，《野草》是孙福熙。书名用的是这三本。格子、云头和角框是程序算的。
+原书封面。从左到右：陶元庆画的《彷徨》（1926，北新书局初版），国家图书馆藏 1930 年北新书局《呐喊》（封面是鲁迅设计的；1923 年初版是新潮社），孙福熙画的《野草》（1927）。扫描出处和许可写在[画廊](docs/demo/index.html)。
+
+<p align="center">
+  <img src="assets/demo/collage.png" alt="从左到右：彷徨，赭黄纸、窗格压在下书口；呐喊，近白的纸、上沿一排云头；野草，暗蓝书口、纸上的角框。这三张是 luxun-cover 画的。" width="840">
+</p>
+
+下面是 `luxun-cover` 画出的三张。从左到右：《彷徨》赭黄纸，窗格压在下书口；《呐喊》近白的纸，上沿一排云头；《野草》暗蓝书口，角框留在纸上。书名用的是上面三本。格子、云头和角框是程序算的。
 
 ```bash
 luxun-cover --title 彷徨 --out panghuang.svg
 ```
 
 <p align="center">
-  <img src="assets/demo/cycle.gif" alt="三张书衣轮流出现：先是彷徨，然后呐喊，然后野草。" width="280">
+  <img src="assets/demo/cycle.gif" alt="命令画出的三张轮流出现：彷徨，然后呐喊，然后野草。" width="280">
 </p>
 
 画廊页面在 [`docs/demo/`](docs/demo/index.html)。GitHub 上打开 Settings → Pages，选 **Deploy from a branch**，分支 `main`，文件夹 `/docs`。地址是 <https://gypsoo.github.io/luxun-cover-skill/demo/>。
