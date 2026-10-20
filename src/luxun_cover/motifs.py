@@ -48,18 +48,19 @@ def _lattice(
     plant: float,
 ) -> list[Box]:
     variant = seed % 3
-    width = 256 + jitter(seed, 1, 8)
-    height = 292 + jitter(seed, 2, 8)
-    width = min(width, max(80.0, field.w - 48))
-    height = min(height, max(80.0, field.h * 0.46))
-    x = field.x + 30 + jitter(seed, 3, 6)
+    width = 312 + jitter(seed, 1, 8)
+    height = 328 + jitter(seed, 2, 8)
+    width = min(width, max(120.0, field.w - 36))
+    height = min(height, max(120.0, field.h * 0.46))
+    x = field.x + 18 + jitter(seed, 3, 5)
+    sink = min(max(plant, 0.0), 34.0)
     if anchor == "bottom":
         # `plant` drops the mass a short way into the bottom band, still on the page.
-        y = field.bottom - height + min(max(plant, 0.0), 26.0)
+        y = field.bottom - height + sink
     else:
-        y = field.y + 18 + jitter(seed, 4, 6)
+        y = field.y + 16 + jitter(seed, 4, 5)
     x = _clamp(x, field.x + 8, field.right - width - 8)
-    y_hi = field.bottom - height + min(max(plant, 0.0), 26.0)
+    y_hi = field.bottom - height + sink
     y = _clamp(y, field.y + 8, max(field.y + 8, y_hi))
     ink = palette.ink
     if variant == 0:
@@ -71,45 +72,62 @@ def _lattice(
     return [Box(x, y, width, height)]
 
 
+def _filled_frame(doc: SvgDoc, x: float, y: float, w: float, h: float, t: float, ink: str) -> None:
+    """A border built from four bars, so the corner is solid and the weight is exact."""
+    t = min(t, w / 3, h / 3)
+    doc.rect(x, y, w, t, fill=ink)
+    doc.rect(x, y + h - t, w, t, fill=ink)
+    doc.rect(x, y, t, h, fill=ink)
+    doc.rect(x + w - t, y, t, h, fill=ink)
+
+
 def _lattice_bar(doc: SvgDoc, x: float, y: float, w: float, h: float, ink: str) -> None:
     """A solid vertical mass and three open panels. Weight, not a figure and not a table."""
-    doc.rect(x, y, w, h, fill="none", stroke=ink, sw=8)
-    bar = w * 0.40
-    doc.rect(x, y, bar, h, fill=ink)
-    rx = x + bar
-    rw = w - bar
-    for index, (a, b) in enumerate(((0.0, 0.34), (0.34, 0.67), (0.67, 1.0))):
-        pad = 9
-        y0 = y + h * a + pad
-        y1 = y + h * b - pad
-        doc.rect(rx + pad, y0, rw - pad * 2, max(8.0, y1 - y0), fill="none", stroke=ink, sw=2.4)
+    border = max(14.0, min(18.0, w * 0.055))
+    _filled_frame(doc, x, y, w, h, border, ink)
+    inner_x = x + border
+    inner_y = y + border
+    inner_w = w - border * 2
+    inner_h = h - border * 2
+    bar = inner_w * 0.42
+    doc.rect(inner_x, inner_y, bar, inner_h, fill=ink)
+    rx = inner_x + bar
+    rw = inner_w - bar
+    rail = max(10.0, min(14.0, inner_h * 0.045))
+    pane_h = (inner_h - rail * 2) / 3
+    for index in range(2):
+        yy = inner_y + (index + 1) * pane_h + index * rail
+        doc.rect(rx, yy, rw, rail, fill=ink)
 
 
 def _lattice_panes(doc: SvgDoc, x: float, y: float, w: float, h: float, ink: str) -> None:
     """Two by three. One cell is solid ink; the rest is paper."""
-    doc.rect(x, y, w, h, fill="none", stroke=ink, sw=8)
+    border = max(12.0, min(16.0, w * 0.05))
+    _filled_frame(doc, x, y, w, h, border, ink)
     xs = (0.0, 0.46, 1.0)
-    ys = (0.0, 0.38, 0.70, 1.0)
-    _grid_lines(doc, x, y, w, h, xs, ys, ink, 3.0)
+    ys = (0.0, 0.36, 0.68, 1.0)
+    _grid_bars(doc, x, y, w, h, xs, ys, ink, max(8.0, border * 0.55))
     cx, cy, cw, ch = _cell_box(x, y, w, h, xs, ys, col=0, row=1)
     doc.rect(cx, cy, cw, ch, fill=ink)
-    _cell_diagonals(doc, x, y, w, h, xs, ys, col=1, row=0, ink=ink, sw=2.0)
+    _cell_diagonals(doc, x, y, w, h, xs, ys, col=1, row=0, ink=ink, sw=4.5)
 
 
 def _lattice_concentric(doc: SvgDoc, x: float, y: float, w: float, h: float, ink: str) -> None:
-    doc.rect(x, y, w, h, fill="none", stroke=ink, sw=7)
-    m1 = 22
-    doc.rect(x + m1, y + m1, w - m1 * 2, h - m1 * 2, fill="none", stroke=ink, sw=2.2)
-    m2 = 44
-    doc.rect(x + m2, y + m2, w - m2 * 2, h - m2 * 2, fill="none", stroke=ink, sw=2.2)
+    _filled_frame(doc, x, y, w, h, max(14.0, min(18.0, w * 0.055)), ink)
+    m1 = max(28.0, min(w, h) * 0.12)
+    _filled_frame(doc, x + m1, y + m1, w - m1 * 2, h - m1 * 2, 6.5, ink)
+    m2 = m1 * 2.05
+    if w - m2 * 2 > 36 and h - m2 * 2 > 36:
+        _filled_frame(doc, x + m2, y + m2, w - m2 * 2, h - m2 * 2, 4.5, ink)
+    arm = min(w, h) * 0.16
     cx = x + w / 2
     cy = y + h / 2
-    arm = min(w, h) * 0.18
-    doc.line(cx - arm, cy, cx + arm, cy, stroke=ink, sw=2.2)
-    doc.line(cx, cy - arm, cx, cy + arm, stroke=ink, sw=2.2)
+    bar = 12.0
+    doc.rect(cx - arm, cy - bar / 2, arm * 2, bar, fill=ink)
+    doc.rect(cx - bar / 2, cy - arm, bar, arm * 2, fill=ink)
 
 
-def _grid_lines(
+def _grid_bars(
     doc: SvgDoc,
     x: float,
     y: float,
@@ -121,11 +139,11 @@ def _grid_lines(
     sw: float,
 ) -> None:
     for fx in xs[1:-1]:
-        xx = x + w * fx
-        doc.line(xx, y, xx, y + h, stroke=ink, sw=sw)
+        xx = x + w * fx - sw / 2
+        doc.rect(xx, y, sw, h, fill=ink)
     for fy in ys[1:-1]:
-        yy = y + h * fy
-        doc.line(x, yy, x + w, yy, stroke=ink, sw=sw)
+        yy = y + h * fy - sw / 2
+        doc.rect(x, yy, w, sw, fill=ink)
 
 
 def _cell_box(
@@ -181,26 +199,29 @@ def _cloud(
     """
     del anchor, plant
     ink = palette.ink
-    count = 4 if seed % 2 == 0 else 5
-    radius = 86 if count == 4 else 70
-    drop = radius * 0.26
-    left = field.x + 36 + jitter(seed, 6, 5)
-    usable = max(120.0, field.right - left - 28)
-    half = math.sqrt(max(1.0, radius * radius - drop * drop))
-    natural = half * 2 * count
-    scale = min(1.0, usable / natural)
-    radius *= scale
-    drop *= scale
+    # Odd seeds get four larger caps; even seeds a denser row of five.
+    count = 4 if seed % 2 else 5
+    margin = 42.0 if field.w > 480 else 28.0
+    left = field.x + margin + jitter(seed, 6, 3)
+    usable = max(160.0, field.right - margin - left)
+    half = usable / (2 * count)
+    drop_ratio = 0.10
+    radius = half / math.sqrt(1 - drop_ratio * drop_ratio)
+    drop = radius * drop_ratio
     cap = radius - drop
-    pad = 26 + jitter(seed, 5, 3)
+    plinth = 46.0 if count == 4 else 36.0
+    rail = 8.0
+    channel = 10.0
+    pad = 8.0 + jitter(seed, 5, 2)
     baseline = field.y + pad + cap
-    plinth = 12 * scale + 3
-    if baseline + plinth > field.bottom - 8:
-        baseline = field.bottom - 8 - plinth
+    total = plinth + channel + rail
+    if baseline + total > field.bottom - 8:
+        baseline = field.bottom - 8 - total
     path, right = _scallop_path(left, baseline, radius, drop, count)
     doc.path(path, fill=ink)
-    doc.rect(left, baseline - 0.5, right - left, plinth, fill=ink)
-    return [Box(left, baseline - cap - 2, right - left, cap + plinth + 4)]
+    doc.rect(left, baseline - 0.6, right - left, plinth, fill=ink)
+    doc.rect(left, baseline + plinth + channel, right - left, rail, fill=ink)
+    return [Box(left, baseline - cap - 2, right - left, cap + total + 4)]
 
 
 def _scallop_path(
@@ -213,7 +234,7 @@ def _scallop_path(
         cy = baseline + drop
         a0 = math.atan2(-drop, -half)
         a1 = math.atan2(-drop, half)
-        points.extend(_arc_upward(cx, cy, radius, a0, a1))
+        points.extend(_arc_upward(cx, cy, radius, a0, a1, steps=16))
     right = x + half * 2 * count
     points.append((right, baseline))
     points.append((x, baseline))
@@ -254,26 +275,28 @@ def _frame(
     ink = palette.ink
     accent = palette.accent
     variant = seed % 2
-    left = field.x + 26 + jitter(seed, 7, 5)
-    top = field.y + 26 + jitter(seed, 8, 5)
-    right = field.right - 18 + jitter(seed, 9, 4)
-    bottom = field.bottom - 22
-    outer = 8.0
-    inner = 2.2
-    channel = 13.0
-    leg_x = min(230 + jitter(seed, 10, 12), (right - left) * 0.62)
-    leg_y = min(168 + jitter(seed, 11, 10), (bottom - top) * 0.34)
+    left = field.x + 22 + jitter(seed, 7, 4)
+    top = field.y + 18 + jitter(seed, 8, 4)
+    right = field.right - 22 + jitter(seed, 9, 3)
+    bottom = field.bottom - 28
+    outer = 20.0
+    inner = 3.4
+    channel = 15.0
+    span_x = max(40.0, right - left)
+    span_y = max(40.0, bottom - top)
+    leg_x = min(300 + jitter(seed, 10, 10), span_x * 0.62)
+    leg_y = min(220 + jitter(seed, 11, 8), span_y * 0.40)
     boxes = []
     boxes.append(_corner(doc, left, top, leg_x, leg_y, outer, inner, channel, ink, right=True, down=True))
     if accent != ink:
         _jewel(doc, left, top, outer, channel, accent, right=True, down=True)
     # The second corner stays at the bottom. A top-right corner collides with a vertical title.
     if variant == 0:
-        sx, sy = min(120.0, leg_x * 0.55), min(86.0, leg_y * 0.52)
+        sx, sy = min(168.0, leg_x * 0.58), min(118.0, leg_y * 0.56)
     else:
-        sx, sy = min(72.0, leg_x * 0.34), min(120.0, leg_y * 0.72)
+        sx, sy = min(108.0, leg_x * 0.40), min(156.0, leg_y * 0.72)
     boxes.append(
-        _corner(doc, right, bottom, sx, sy, 6.0, 1.8, 10.0, ink, right=False, down=False)
+        _corner(doc, right, bottom, sx, sy, 14.0, 2.8, 12.0, ink, right=False, down=False)
     )
     return boxes
 
@@ -337,7 +360,7 @@ def _jewel(
     right: bool,
     down: bool,
 ) -> None:
-    side = max(5.0, channel - 4.0)
+    side = max(10.0, channel - 3.0)
     jx = x + outer + 2 if right else x - outer - 2 - side
     jy = y + outer + 2 if down else y - outer - 2 - side
     doc.rect(jx, jy, side, side, fill=accent)
@@ -354,22 +377,22 @@ def _meander(
 ) -> list[Box]:
     del anchor, plant
     ink = palette.ink
-    height = 118 + jitter(seed, 12, 4)
-    top = field.y + 48 + jitter(seed, 13, 4)
-    left = field.x + 34
-    width = min(field.w * 0.70, field.w - 48)
+    height = 156 + jitter(seed, 12, 4)
+    top = field.y + 28 + jitter(seed, 13, 4)
+    left = field.x + 42
+    width = min(field.w * 0.64, field.w - 72)
     if seed % 2 == 0:
-        width = min(width, field.w * 0.56)
-    width = max(90.0, width)
+        width = min(width, field.w * 0.52)
+    width = max(120.0, width)
     if top + height > field.bottom - 8:
-        height = max(64.0, field.bottom - 8 - top)
+        height = max(88.0, field.bottom - 8 - top)
     _fret(doc, left, top, width, height, ink)
     return [Box(left, top, width, height)]
 
 
 def _fret(doc: SvgDoc, x: float, y: float, width: float, height: float, ink: str) -> None:
     """A row of squared spirals (回) tied by two rails. Grid construction, not a traced border."""
-    stroke = max(5.0, min(8.0, height * 0.11))
+    stroke = max(9.0, min(13.0, height * 0.13))
     channel = stroke * 0.85
     gap = stroke * 0.7
     cell = height - stroke * 2 - channel * 2

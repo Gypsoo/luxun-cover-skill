@@ -13,10 +13,10 @@
 The printed covers. Left to right: Tao Yuanqing’s 《彷徨》 (1926, Beixin first edition), the National Library of China’s 1930 Beixin 《呐喊》 (Lu Xun designed the cover; the 1923 first edition was issued by Xinchao She), and Sun Fuxi’s 《野草》 (1927). Scan credits and licenses are on the [gallery](docs/demo/index.html) page.
 
 <p align="center">
-  <img src="assets/demo/collage.png" alt="Left to right: 彷徨 on ochre paper with a lattice in the lower band; 呐喊 on near-white paper with cloud-heads along the top; 野草 with dull-blue bands and a corner frame. Drawn by luxun-cover." width="840">
+  <img src="assets/demo/collage.png" alt="Left to right: 彷徨 on ochre paper with a lattice in the lower band; 呐喊 on warm ivory paper with cloud-heads along the top; 野草 with dull-blue bands and a corner frame. Drawn by luxun-cover." width="840">
 </p>
 
-Below, the three covers drawn by `luxun-cover`. Left to right: 《彷徨》 on ochre paper, the lattice set into the lower band; 《呐喊》 on near-white paper, a row of cloud-heads along the top; 《野草》 with dull-blue bands and an open corner frame. The titles come from the three books above. The lattice, the cloud-heads, and the corner frame are calculated in the program.
+Below, the three covers drawn by `luxun-cover`. Left to right: 《彷徨》 on ochre paper, the lattice set into the lower band; 《呐喊》 on warm ivory paper, a row of cloud-heads along the top; 《野草》 with dull-blue bands and an open corner frame. The titles come from the three books above. The lattice, the cloud-heads, and the corner frame are calculated in the program.
 
 ```bash
 luxun-cover --title 彷徨 --out panghuang.svg

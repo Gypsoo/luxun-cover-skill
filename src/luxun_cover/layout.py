@@ -25,9 +25,10 @@ from luxun_cover.typography import (
 
 WIDTH = 640
 HEIGHT = 920
-BAND_TOP = 62
-BAND_BOTTOM = 38
-MARGIN_RIGHT = 48
+# Top band wider than the bottom: 上阔下狭. Both are thick enough to read as a book edge.
+BAND_TOP = 80
+BAND_BOTTOM = 52
+MARGIN_RIGHT = 46
 
 NATURAL_LAYOUT = {
     "lattice": "vertical",
@@ -131,8 +132,8 @@ def compose(
     _paint_rules(doc, rules, pal.ink)
 
     anchor = "bottom" if resolved == "vertical" else "top"
-    # Sit the lower mass a few pixels into the bottom band, still inside the trim.
-    plant = 20.0 if resolved == "vertical" and pal.structure == "bands" else 0.0
+    # Sit the lower mass a short way into the bottom band, still inside the trim.
+    plant = 30.0 if resolved == "vertical" and pal.structure == "bands" else 0.0
     footprints = draw_motif(
         motif, doc, field, pal, seed_n, anchor=anchor, plant=plant
     )
@@ -161,17 +162,21 @@ def compose(
 
 def _vertical_regions(
     title: str, author: str, subtitle: str, pal: Palette, seed: int
-) -> tuple[TypeLayout, Box, list[Box], list[tuple[float, float, float]]]:
+) -> tuple[TypeLayout, Box, list[Box], list[tuple[float, ...]]]:
     del seed
     bands = _bands(pal)
-    rules: list[tuple[float, float, float]] = []
+    rules: list[tuple[float, ...]] = []
     if pal.structure == "bands":
-        y_top = BAND_TOP + 46
-        y_limit = HEIGHT - BAND_BOTTOM - 24
+        y_top = BAND_TOP + 32
+        y_limit = HEIGHT - BAND_BOTTOM - 28
     else:
-        rules = [(40, 36, WIDTH - 36), (HEIGHT - 72, 36, WIDTH - 36), (HEIGHT - 56, 36, WIDTH - 36)]
-        y_top = 78
-        y_limit = HEIGHT - 96
+        rules = [
+            (46, 42, WIDTH - 42, 4.4),
+            (HEIGHT - 86, 42, WIDTH - 42, 3.2),
+            (HEIGHT - 64, 42, WIDTH - 42, 5.2),
+        ]
+        y_top = 88
+        y_limit = HEIGHT - 112
     avail_h = y_limit - y_top
     text = plan_vertical(
         title,
@@ -180,7 +185,7 @@ def _vertical_regions(
         col_right=WIDTH - MARGIN_RIGHT,
         y_top=y_top,
         avail_h=avail_h,
-        avail_w=150,
+        avail_w=160,
     )
     # Stop the field at the top of the bottom band. Lattice may plant past it.
     if pal.structure == "bands":
@@ -197,18 +202,18 @@ def _horizontal_regions(
     subtitle: str,
     pal: Palette,
     shift: float,
-) -> tuple[TypeLayout, Box, list[Box], list[tuple[float, float, float]]]:
+) -> tuple[TypeLayout, Box, list[Box], list[tuple[float, ...]]]:
     bands = _bands(pal)
-    rules: list[tuple[float, float, float]] = []
-    avail_w = WIDTH - 96
+    rules: list[tuple[float, ...]] = []
+    avail_w = WIDTH - 84
     center = WIDTH / 2
     if pal.structure == "rules":
         text, rules = _horizontal_rules(title, author, subtitle, center, avail_w, shift)
         field_bottom = rules[1][0] - 18  # the upper of the title rules
-        field = Box(0, 52, WIDTH, max(80, field_bottom - 52))
+        field = Box(0, 58, WIDTH, max(80, field_bottom - 58))
         return text, field, bands, rules
 
-    bottom = HEIGHT - BAND_BOTTOM - 26
+    bottom = HEIGHT - BAND_BOTTOM - 28
     text = plan_horizontal(
         title,
         author,
@@ -219,7 +224,7 @@ def _horizontal_regions(
         shift=shift,
     )
     field_bottom = text.box.y - 22
-    field = Box(0, BAND_TOP, WIDTH, max(80, field_bottom - BAND_TOP))
+    field = Box(0, BAND_TOP + 8, WIDTH, max(80, field_bottom - (BAND_TOP + 8)))
     return text, field, bands, rules
 
 
@@ -230,16 +235,16 @@ def _horizontal_rules(
     center: float,
     avail_w: float,
     shift: float,
-) -> tuple[TypeLayout, list[tuple[float, float, float]]]:
-    author_size = 22.0
-    sub_size = 16.0
+) -> tuple[TypeLayout, list[tuple[float, ...]]]:
+    author_size = 32.0
+    sub_size = 22.0
     below = 0.0
     if author:
         below += author_size
     if subtitle:
-        below += (10.0 if author else 0.0) + sub_size
-    lower = HEIGHT - 42 - below - (12 if below else 0)
-    slot = 108.0 if len(title) <= 3 else 92.0
+        below += (12.0 if author else 0.0) + sub_size
+    lower = HEIGHT - 48 - below - (14 if below else 0)
+    slot = 136.0 if len(title) <= 3 else 116.0
     upper = lower - slot
     title_layout = plan_between_rules(
         title,
@@ -253,7 +258,7 @@ def _horizontal_rules(
     y = lower + 14
     author_left = title_layout.box.x + title_layout.box.w * 0.4
     if author:
-        piece = plan_below(author, left=author_left, y_top=y, size=author_size, tracking=0.16)
+        piece = plan_below(author, left=author_left, y_top=y, size=author_size, tracking=0.12)
         glyphs.extend(piece.glyphs)
         y = piece.box.bottom + 8
     if subtitle:
@@ -264,11 +269,11 @@ def _horizontal_rules(
     top = min(g.y_top for g in glyphs)
     bottom = max(g.y_top + g.size for g in glyphs)
     text = TypeLayout(tuple(glyphs), (), Box(left, top, right - left, bottom - top))
-    inset = 36.0
+    inset = 42.0
     rules = [
-        (40.0, inset, WIDTH - inset),
-        (upper, inset, WIDTH - inset),
-        (lower, inset, WIDTH - inset),
+        (50.0, inset, WIDTH - inset, 4.8),
+        (upper, inset, WIDTH - inset, 3.4),
+        (lower, inset, WIDTH - inset, 5.6),
     ]
     return text, rules
 
@@ -282,9 +287,11 @@ def _bands(pal: Palette) -> list[Box]:
     ]
 
 
-def _paint_rules(doc: SvgDoc, rules: list[tuple[float, float, float]], ink: str) -> None:
-    for y, x0, x1 in rules:
-        doc.line(x0, y, x1, y, stroke=ink, sw=2.4, cap="butt")
+def _paint_rules(doc: SvgDoc, rules: list[tuple[float, ...]], ink: str) -> None:
+    for rule in rules:
+        y, x0, x1 = rule[0], rule[1], rule[2]
+        sw = rule[3] if len(rule) > 3 else 3.4
+        doc.line(x0, y, x1, y, stroke=ink, sw=sw, cap="butt")
 
 
 def _balance(
@@ -315,13 +322,13 @@ def _balance(
 def _place_sun(
     field: Box, footprints: list[Box], seed: int
 ) -> tuple[float, float, float] | None:
-    radius = 16.0
+    radius = 24.0
     candidates = (
-        (field.x + field.w * 0.68, field.y + field.h * 0.15),
-        (field.x + field.w * 0.46, field.y + field.h * 0.18),
-        (field.x + field.w * 0.58, field.y + min(220.0, field.h * 0.36)),
+        (field.x + field.w * 0.70, field.y + field.h * 0.13),
+        (field.x + field.w * 0.56, field.y + field.h * 0.16),
+        (field.x + field.w * 0.62, field.y + min(240.0, field.h * 0.30)),
     )
-    reach = radius + 22
+    reach = radius + 28
     for index, (cx, cy) in enumerate(candidates):
         cx += jitter(seed, 30 + index, 8)
         cy += jitter(seed, 40 + index, 6)
@@ -339,9 +346,9 @@ def _draw_sun(doc: SvgDoc, cx: float, cy: float, radius: float, color: str) -> B
     import math
 
     doc.circle(cx, cy, radius, fill=color)
-    rays = 18
-    gap = radius * 0.28
-    length = radius * 0.55
+    rays = 12
+    gap = radius * 0.20
+    length = radius * 0.50
     for index in range(rays):
         angle = -math.pi / 2 + index * (2 * math.pi / rays)
         inner = radius + gap
@@ -352,7 +359,7 @@ def _draw_sun(doc: SvgDoc, cx: float, cy: float, radius: float, color: str) -> B
             cx + math.cos(angle) * outer,
             cy + math.sin(angle) * outer,
             stroke=color,
-            sw=1.6,
+            sw=2.8,
             cap="butt",
         )
     reach = radius + gap + length
@@ -365,9 +372,9 @@ def _place_seal(
     if not footprints:
         return None
     host = max(footprints, key=lambda item: item.area())
-    cx = host.right + 30 + jitter(seed, 50, 4)
-    cy = host.y + min(36.0, host.h * 0.18) + jitter(seed, 51, 4)
-    box = Box(cx - 14, cy - 14, 28, 28)
+    cx = host.right + 34 + jitter(seed, 50, 4)
+    cy = host.y + min(42.0, host.h * 0.18) + jitter(seed, 51, 4)
+    box = Box(cx - 18, cy - 18, 36, 36)
     if not _inside(box, field, pad=2):
         return None
     if any(intersects(box, item, gap=6) for item in footprints):
@@ -377,38 +384,45 @@ def _place_seal(
 
 def _draw_seal(doc: SvgDoc, cx: float, cy: float, color: str) -> Box:
     """A geometric chop: two circles, no forged characters."""
-    doc.circle(cx, cy, 11, fill="none", stroke=color, sw=1.6)
-    doc.circle(cx, cy, 6.5, fill="none", stroke=color, sw=1.1)
-    return Box(cx - 13, cy - 13, 26, 26)
+    doc.circle(cx, cy, 14, fill="none", stroke=color, sw=2.4)
+    doc.circle(cx, cy, 8, fill="none", stroke=color, sw=1.5)
+    return Box(cx - 16, cy - 16, 32, 32)
 
 
 def _place_lines(
     field: Box, footprints: list[Box], seed: int
 ) -> tuple[float, float, float] | None:
-    length = 118 + jitter(seed, 60, 8)
-    x = field.x + 78 + jitter(seed, 61, 6)
-    candidates = (
-        field.y + field.h * 0.34,
-        field.y + 48,
-        field.y + field.h * 0.48,
+    length = 150 + jitter(seed, 60, 8)
+    gap = 13.0
+    height = 2 * gap + 4
+    # The open paper sits between the upper ornament and anything planted on the lower edge.
+    ys = (
+        field.y + field.h * 0.44,
+        field.y + field.h * 0.38,
+        field.y + field.h * 0.50,
     )
-    height = 3 * 8 + 2
-    for cy in candidates:
-        box = Box(x, cy, length, height)
-        if not _inside(box, field, pad=2):
-            continue
-        if any(intersects(box, item, gap=10) for item in footprints):
-            continue
-        return x, cy, length
+    xs = (
+        field.x + field.w * 0.30 + jitter(seed, 61, 6),
+        field.x + field.w * 0.46 + jitter(seed, 62, 6),
+        field.x + field.w * 0.18 + jitter(seed, 63, 4),
+    )
+    for cy in ys:
+        for x in xs:
+            box = Box(x, cy, length, height)
+            if not _inside(box, field, pad=2):
+                continue
+            if any(intersects(box, item, gap=12) for item in footprints):
+                continue
+            return x, cy, length
     return None
 
 
 def _draw_lines(doc: SvgDoc, x: float, y: float, length: float, color: str) -> Box:
-    gap = 8.0
-    for index in range(4):
+    gap = 13.0
+    for index in range(3):
         yy = y + index * gap
-        doc.line(x, yy, x + length, yy, stroke=color, sw=1.5, cap="butt")
-    return Box(x, y, length, gap * 3 + 2)
+        doc.line(x, yy, x + length, yy, stroke=color, sw=3.6, cap="butt")
+    return Box(x, y, length, gap * 2 + 4)
 
 
 def _inside(box: Box, field: Box, pad: float) -> bool:
