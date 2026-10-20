@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>民国书衣 · luxun-cover-skill</title>
-  <meta name="description" content="给人和编程代理用的民国书衣工具。几何纹样、暖纸、墨加一个强调色。输出是致敬构图，不是原封面的复制。">
+  <meta name="description" content="luxun-cover 在本地画书衣。页面上是《彷徨》《呐喊》《野草》三张，纹样用坐标算出来。">
   <link rel="canonical" href="https://gypsoo.github.io/luxun-cover-skill/demo/">
   <meta property="og:title" content="民国书衣 · luxun-cover-skill">
-  <meta property="og:description" content="几何纹样、暖纸、墨加一个强调色。致敬构图，不是原封面的复制。">
+  <meta property="og:description" content="《彷徨》《呐喊》《野草》三张书衣，由 luxun-cover 用坐标画出。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gypsoo.github.io/luxun-cover-skill/demo/">
   <meta property="og:image" content="https://gypsoo.github.io/luxun-cover-skill/demo/covers/panghuang.png">
@@ -279,13 +279,13 @@
     <h1>民国书衣</h1>
     <p class="name">luxun-cover-skill</p>
 
-    <p class="lede">给人和编程代理用的一套书衣工具。几何纹样、暖纸、墨加一个强调色、大块余白，书名与纹样分开。</p>
-    <p class="lede en">An agent skill and a local Python generator for Republican-era Chinese book covers: geometric ornament, warm paper, ink plus one accent, and wide margins. The title stays apart from the ornament.</p>
+    <p class="lede">仓库里的命令叫 <code>luxun-cover</code>。它按一本书的尺寸写 SVG：上下留书口，纸色偏暖，字用墨。纹样占一角，书名写在空出来的地方。仓库里另有一份给编程代理看的 SKILL.md。</p>
+    <p class="lede en">The command in this repo is <code>luxun-cover</code>. It writes an SVG the size of a book: bands along the top and bottom, warm paper, ink for the characters. The ornament takes one corner, and the title sits in the space left over. SKILL.md, in the repo, is the note for a coding agent.</p>
 
     <ul class="gallery">
       <li>
         <figure>
-          <img src="covers/panghuang.png" width="1280" height="1840" alt="彷徨：赭黄纸，左下窗格，直排书名。致敬构图，不是原封面。">
+          <img src="covers/panghuang.png" width="1280" height="1840" alt="彷徨：赭黄纸，窗格压在下书口，书名直排在右边。">
           <figcaption>
             <span class="title">彷徨</span>
             <span class="meta">赭黄 · 窗格</span>
@@ -295,7 +295,7 @@
       </li>
       <li>
         <figure>
-          <img src="covers/nahan.png" width="1280" height="1840" alt="呐喊：暖白纸，上端云头，横排书名。致敬构图，不是原封面。">
+          <img src="covers/nahan.png" width="1280" height="1840" alt="呐喊：近白的纸，上沿一排云头，书名横排在下面。">
           <figcaption>
             <span class="title">呐喊</span>
             <span class="meta">纯墨 · 云头</span>
@@ -305,7 +305,7 @@
       </li>
       <li>
         <figure>
-          <img src="covers/yecao.png" width="1280" height="1840" alt="野草：暖纸，暗蓝书口，角框纹样，直排书名。致敬构图，不是原封面。">
+          <img src="covers/yecao.png" width="1280" height="1840" alt="野草：暗蓝书口，纸上两只角框，书名直排在右边。">
           <figcaption>
             <span class="title">野草</span>
             <span class="meta">暗蓝 · 角框</span>
@@ -316,19 +316,19 @@
     </ul>
 
     <div class="prose">
-      <p class="homage">这些是致敬构图，不是原封面的复制，也不是陶元庆原画的临摹。《呐喊》初版封面是鲁迅自己做的，《野草》封面是孙福熙做的。这里只用这些书名，版式是新的。几何纹样在程序里算出来，SVG 的说明里留着 not a facsimile。</p>
-      <p class="homage en">Homage compositions, not facsimiles of the original covers, and not tracings of Tao Yuanqing’s paintings. The first-edition cover of 《呐喊》 was designed by Lu Xun; the cover of 《野草》 was designed by Sun Fuxi. These layouts are new. The ornaments are computed, and the SVG keeps the words “not a facsimile”.</p>
+      <p class="homage">1926 年《彷徨》的封面是陶元庆画的，三个人并坐，面向落日。《呐喊》1923 年初版是鲁迅自己做的，深红地，一块黑。《野草》1927 年初版是孙福熙的山水，有云、远山和草。上面三张用的是这三个书名。窗格、云头、角框是程序里的矩形和圆弧。SVG 的 <code>&lt;desc&gt;</code> 里留着 <code>not a facsimile</code> 这几个词。</p>
+      <p class="homage en">Tao Yuanqing painted the 1926 cover of 《彷徨》: three figures seated together, facing the setting sun. Lu Xun designed the 1923 《呐喊》 cover himself, a deep-red ground with one black block. Sun Fuxi’s 1927 《野草》 is a landscape of cloud, distant hills, and grass. The three pictures above use those titles. Lattice, cloud-head, and corner frame are rectangles and arcs in the program. The SVG <code>&lt;desc&gt;</code> keeps the words <code>not a facsimile</code>.</p>
 
-      <h2>生成一张</h2>
-      <p class="en">Install, then make one cover.</p>
+      <h2>画一张</h2>
+      <p class="en">From the repository root:</p>
       <pre><code>pip install -e .
 luxun-cover --title 彷徨 --out panghuang.svg</code></pre>
 
       <figure class="cycle">
-        <img src="cycle.gif" width="620" height="927" alt="循环：彷徨、呐喊、野草，依次更换纹样和色板。">
+        <img src="cycle.gif" width="620" height="927" alt="三张轮流出现：彷徨的赭黄窗格，呐喊的云头，野草的暗蓝角框。">
         <figcaption>
-          同一套语法，换纹样和色板。
-          <span class="en">Same grammar; the motif and palette change.</span>
+          动图里依次是上面三张。
+          <span class="en">The loop steps through the three covers above.</span>
         </figcaption>
       </figure>
 
@@ -338,7 +338,7 @@ luxun-cover --title 彷徨 --out panghuang.svg</code></pre>
         <a href="https://github.com/Gypsoo/luxun-cover-skill/blob/main/SKILL.md">SKILL.md</a>
       </p>
 
-      <footer>MIT · not a facsimile</footer>
+      <footer>MIT</footer>
     </div>
   </main>
   <div class="edge-bottom" aria-hidden="true"></div>

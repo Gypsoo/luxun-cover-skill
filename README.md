@@ -5,22 +5,22 @@
 ## 演示
 
 <p align="center">
-  <img src="assets/demo/collage.png" alt="三张致敬书衣并置：彷徨（赭黄、窗格）、呐喊（纯墨、云头）、野草（暗蓝、角框）。不是原封面的复制。" width="840">
+  <img src="assets/demo/collage.png" alt="从左到右：彷徨，赭黄纸、窗格压在下书口；呐喊，近白的纸、上沿一排云头；野草，暗蓝书口、纸上的角框。" width="840">
 </p>
 
-赭黄窗格、纯墨云头、暗蓝角框。输出是致敬构图，不是原封面的复制。
+从左到右：《彷徨》赭黄纸，窗格压在下书口；《呐喊》近白的纸，上沿一排云头；《野草》暗蓝书口，角框留在纸上。《呐喊》初版封面是鲁迅自己做的，《彷徨》是陶元庆画的，《野草》是孙福熙。书名用的是这三本。格子、云头和角框是程序算的。
 
 ```bash
 luxun-cover --title 彷徨 --out panghuang.svg
 ```
 
 <p align="center">
-  <img src="assets/demo/cycle.gif" alt="循环播放三张书衣：彷徨、呐喊、野草，依次换纹样和色板。" width="280">
+  <img src="assets/demo/cycle.gif" alt="三张书衣轮流出现：先是彷徨，然后呐喊，然后野草。" width="280">
 </p>
 
-静态画廊在 [`docs/demo/`](docs/demo/index.html)。Settings → Pages 选择 **Deploy from a branch**，分支 `main`、文件夹 `/docs` 之后，地址是 <https://gypsoo.github.io/luxun-cover-skill/demo/>。
+画廊页面在 [`docs/demo/`](docs/demo/index.html)。GitHub 上打开 Settings → Pages，选 **Deploy from a branch**，分支 `main`，文件夹 `/docs`。地址是 <https://gypsoo.github.io/luxun-cover-skill/demo/>。
 
-给人和编程代理用的一套民国书衣工具：一份 Agent Skill，加上一个本地 Python 生成器。它按陶元庆为鲁迅书籍建立的封面语法作 SVG：几何纹样、暖纸、墨加一个强调色、大块余白、书名与纹样分开。输出是致敬构图，不是原封面的复制。
+一条本地命令，加上一份给编程代理的 [SKILL.md](SKILL.md)。命令按书的尺寸写 SVG：上下有书口，纸色偏暖，字用墨，纹样靠在一边。
 
 ## 这是什么
 
