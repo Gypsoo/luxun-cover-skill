@@ -193,6 +193,44 @@ class RenderTests(unittest.TestCase):
             self.assertIn("not a facsimile", disk)
             _parse(disk)
 
+    def test_examples_hold_printed_weight(self) -> None:
+        """Thumbnails have to keep the book edge, the ink, and the title."""
+        page = 640 * 920
+        minimum_area = {"lattice": 0.16, "cloud": 0.10, "frame": 0.11}
+        for spec in EXAMPLES:
+            plan = compose(
+                title=spec["title"],
+                author="鲁迅",
+                motif=spec["motif"],
+                palette=spec["palette"],
+                layout=spec["layout"],
+                seed=spec["seed"],
+            )
+            self.assertFalse(plan.notes, plan.notes)
+            area = sum(item.area() for item in plan.footprints) / page
+            self.assertGreater(area, minimum_area[spec["motif"]], spec["file"])
+            if plan.layout == "vertical":
+                self.assertGreater(plan.text_box.w, 92)
+                self.assertGreater(plan.text_box.h, 320)
+                self.assertEqual(len(plan.bands), 2)
+                self.assertGreaterEqual(plan.bands[0].h, 72)
+                self.assertGreater(plan.bands[0].h, plan.bands[1].h)
+            else:
+                self.assertGreater(plan.text_box.w, 190)
+                self.assertGreater(plan.text_box.h, 120)
+                self.assertEqual(plan.bands, ())
+
+    def test_palette_colors_keep_print_depth(self) -> None:
+        ochre = get_palette("ochre")
+        indigo = get_palette("indigo")
+        ink = get_palette("ink")
+        cinnabar = get_palette("cinnabar")
+        self.assertEqual(ochre.paper, "#E09A2C")
+        self.assertEqual(ochre.accent, "#B43316")
+        self.assertEqual(indigo.accent, "#1A3142")
+        self.assertEqual(ink.paper, "#F0E2C6")
+        self.assertEqual(cinnabar.accent, "#8C2F28")
+
 
 class CliTests(unittest.TestCase):
     def test_module_writes_svg(self) -> None:

@@ -30,33 +30,35 @@ class Palette:
         return self.accent
 
 
+# Values sit darker than a screen swatch so a thumbnail still separates
+# paper, ink, and the book edge. They are not a match to any one printing.
 PALETTES: dict[str, Palette] = {
     "cinnabar": Palette(
         name="cinnabar",
-        paper="#F2E4C8",
-        ink="#1A1612",
-        accent="#A33B32",
+        paper="#E4CBA8",
+        ink="#14110E",
+        accent="#8C2F28",
         structure="bands",
     ),
     "ochre": Palette(
         name="ochre",
-        paper="#E2AC45",
-        ink="#1C140F",
-        accent="#C4482A",
+        paper="#E09A2C",
+        ink="#14110C",
+        accent="#B43316",
         structure="bands",
     ),
     "indigo": Palette(
         name="indigo",
-        paper="#EFE6D6",
-        ink="#1A1916",
-        accent="#2F4458",
+        paper="#E3D0B0",
+        ink="#141311",
+        accent="#1A3142",
         structure="bands",
     ),
     "ink": Palette(
         name="ink",
-        paper="#F7F3EA",
-        ink="#161616",
-        accent="#161616",
+        paper="#F0E2C6",
+        ink="#12110F",
+        accent="#12110F",
         structure="rules",
     ),
 }

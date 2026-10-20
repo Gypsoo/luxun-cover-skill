@@ -95,33 +95,35 @@ def _run_width(text: str, size: float, tracking: float) -> float:
 
 
 def vertical_tracking(n: int) -> float:
+    # Two characters stay a column, with a little air. Longer titles close up.
     if n <= 2:
-        return 0.28
+        return 0.16
     if n <= 4:
-        return 0.12
-    return 0.06
+        return 0.09
+    return 0.04
 
 
 def horizontal_tracking(n: int) -> float:
+    # Two characters keep a wide gap, on the order of 「彷　徨」.
     if n <= 1:
         return 0.0
     if n == 2:
-        return 0.62
+        return 0.48
     if n == 3:
-        return 0.36
+        return 0.28
     if n <= 5:
-        return 0.18
-    return 0.06
+        return 0.14
+    return 0.05
 
 
 def _preferred_vertical_size(n: int) -> float:
-    table = {1: 100, 2: 84, 3: 70, 4: 60, 5: 52, 6: 46, 7: 42, 8: 38}
-    return float(table.get(n, 34))
+    table = {1: 118, 2: 100, 3: 84, 4: 72, 5: 62, 6: 54, 7: 48, 8: 44}
+    return float(table.get(n, 38))
 
 
 def _preferred_horizontal_size(n: int) -> float:
-    table = {1: 76, 2: 64, 3: 54, 4: 46, 5: 40, 6: 36}
-    return float(table.get(n, 32))
+    table = {1: 96, 2: 86, 3: 70, 4: 58, 5: 50, 6: 44}
+    return float(table.get(n, 38))
 
 
 def plan_vertical(
@@ -149,21 +151,21 @@ def plan_vertical(
     y = _stack_vertical(glyphs, title, col_right, y, size, vertical_tracking(len(title)))
 
     if author or subtitle:
-        gap = size * 0.34
+        gap = size * 0.26
         y += gap
-        rule_w = size * 0.62
-        marks.append(Mark(col_right - rule_w, y, rule_w, 3.0))
-        y += 3.0 + size * 0.30
+        rule_w = size * 0.74
+        marks.append(Mark(col_right - rule_w, y, rule_w, 5.0))
+        y += 5.0 + size * 0.22
 
     if author:
-        author_size = max(16.0, round(size * 0.34))
+        author_size = max(22.0, round(size * 0.40))
         y = _stack_vertical(
             glyphs, author, col_right, y, author_size, vertical_tracking(len(author))
         )
     if subtitle:
         if author:
-            y += size * 0.22
-        sub_size = max(14.0, round(size * 0.26))
+            y += size * 0.18
+        sub_size = max(18.0, round(size * 0.30))
         y = _stack_vertical(
             glyphs, subtitle, col_right, y, sub_size, vertical_tracking(len(subtitle))
         )
@@ -194,10 +196,10 @@ def plan_horizontal(
     title_left = center_x - title_w / 2.0 + shift
     title_left = min(max(title_left, margin), margin + avail_w - title_w)
 
-    author_size = max(16.0, round(size * 0.34)) if author else 0.0
-    sub_size = max(14.0, round(size * 0.26)) if subtitle else 0.0
-    author_track = 0.12
-    sub_track = 0.08
+    author_size = max(22.0, round(size * 0.40)) if author else 0.0
+    sub_size = max(18.0, round(size * 0.30)) if subtitle else 0.0
+    author_track = 0.10
+    sub_track = 0.06
     author_w = _run_width(author, author_size, author_track) if author else 0.0
 
     glyphs: list[Glyph] = []
@@ -207,11 +209,11 @@ def plan_horizontal(
     y += size
 
     if author or subtitle:
-        y += size * 0.28
-        rule_w = min(title_w * 0.42, size * 1.3)
+        y += size * 0.22
+        rule_w = min(title_w * 0.46, size * 1.6)
         # The rule aligns to the title's right side, not its center.
-        marks.append(Mark(title_left + title_w - rule_w, y, rule_w, 3.0))
-        y += 3.0 + size * 0.22
+        marks.append(Mark(title_left + title_w - rule_w, y, rule_w, 5.0))
+        y += 5.0 + size * 0.18
 
     # Author begins toward the right half of the title: 书名与著者不对称.
     author_left = title_left + title_w * 0.38
@@ -248,7 +250,7 @@ def plan_between_rules(
     """Title centered in a horizontal slot (the series-page double rule)."""
     size = _preferred_horizontal_size(len(title))
     slot_h = gap_bottom - gap_top
-    size = min(size, slot_h * 0.62)
+    size = min(size, slot_h * 0.74)
     while size > 24 and _run_width(title, size, horizontal_tracking(len(title))) > avail_w:
         size -= 2
     title_w = _run_width(title, size, horizontal_tracking(len(title)))
@@ -281,14 +283,14 @@ def plan_below(
 def _vertical_height(title: str, author: str, subtitle: str, size: float) -> float:
     h = _stack_height(title, size, vertical_tracking(len(title)))
     if author or subtitle:
-        h += size * 0.34 + 3.0 + size * 0.30
+        h += size * 0.26 + 5.0 + size * 0.22
     if author:
-        author_size = max(16.0, round(size * 0.34))
+        author_size = max(22.0, round(size * 0.40))
         h += _stack_height(author, author_size, vertical_tracking(len(author)))
     if subtitle:
         if author:
-            h += size * 0.22
-        sub_size = max(14.0, round(size * 0.26))
+            h += size * 0.18
+        sub_size = max(18.0, round(size * 0.30))
         h += _stack_height(subtitle, sub_size, vertical_tracking(len(subtitle)))
     return h
 
