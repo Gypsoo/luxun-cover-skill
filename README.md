@@ -2,6 +2,24 @@
 
 # luxun-cover-skill
 
+## 演示
+
+<p align="center">
+  <img src="assets/demo/collage.png" alt="三张致敬书衣并置：彷徨（赭黄、窗格）、呐喊（纯墨、云头）、野草（暗蓝、角框）。不是原封面的复制。" width="840">
+</p>
+
+赭黄窗格、纯墨云头、暗蓝角框。输出是致敬构图，不是原封面的复制。
+
+```bash
+luxun-cover --title 彷徨 --out panghuang.svg
+```
+
+<p align="center">
+  <img src="assets/demo/cycle.gif" alt="循环播放三张书衣：彷徨、呐喊、野草，依次换纹样和色板。" width="280">
+</p>
+
+静态画廊在 [`docs/demo/`](docs/demo/index.html)。Settings → Pages 选择 **Deploy from a branch**，分支 `main`、文件夹 `/docs` 之后，地址是 <https://gypsoo.github.io/luxun-cover-skill/demo/>。
+
 给人和编程代理用的一套民国书衣工具：一份 Agent Skill，加上一个本地 Python 生成器。它按陶元庆为鲁迅书籍建立的封面语法作 SVG：几何纹样、暖纸、墨加一个强调色、大块余白、书名与纹样分开。输出是致敬构图，不是原封面的复制。
 
 ## 这是什么

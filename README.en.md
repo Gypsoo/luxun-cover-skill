@@ -2,6 +2,24 @@
 
 # luxun-cover-skill
 
+## Demo
+
+<p align="center">
+  <img src="assets/demo/collage.png" alt="Three homage covers side by side: 彷徨 (ochre, lattice), 呐喊 (ink, cloud), and 野草 (indigo, frame). Not facsimiles of the original covers." width="840">
+</p>
+
+Ochre lattice, ink cloud, indigo frame. The output is a homage layout, not a copy of an original cover.
+
+```bash
+luxun-cover --title 彷徨 --out panghuang.svg
+```
+
+<p align="center">
+  <img src="assets/demo/cycle.gif" alt="A loop of the three covers, changing motif and palette: 彷徨, 呐喊, 野草." width="280">
+</p>
+
+The static gallery is [`docs/demo/`](docs/demo/index.html). After Pages is enabled (Settings → Pages → **Deploy from a branch**, branch `main`, folder `/docs`), it is at <https://gypsoo.github.io/luxun-cover-skill/demo/>.
+
 A tool for Republican-era Chinese book covers, for people and for coding agents: an agent skill, plus a local Python generator. It writes SVG in the cover grammar Tao Yuanqing set for Lu Xun’s books: geometric ornament, warm paper, ink plus one accent, wide margins, the title kept apart from the ornament. The output is a homage layout, not a copy of an original cover.
 
 ## What this is

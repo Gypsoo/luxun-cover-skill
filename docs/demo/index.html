@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>民国书衣 · luxun-cover-skill</title>
+  <meta name="description" content="给人和编程代理用的民国书衣工具。几何纹样、暖纸、墨加一个强调色。输出是致敬构图，不是原封面的复制。">
+  <link rel="canonical" href="https://gypsoo.github.io/luxun-cover-skill/demo/">
+  <meta property="og:title" content="民国书衣 · luxun-cover-skill">
+  <meta property="og:description" content="几何纹样、暖纸、墨加一个强调色。致敬构图，不是原封面的复制。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gypsoo.github.io/luxun-cover-skill/demo/">
+  <meta property="og:image" content="https://gypsoo.github.io/luxun-cover-skill/demo/covers/panghuang.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&amp;family=Noto+Serif:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light only;
+      --paper: #F2E4C8;
+      --sheet: #F7F3EA;
+      --ink: #1A1612;
+      --soft: #4A4036;
+      --cinnabar: #A33B32;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--paper); }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Noto Serif SC", "Songti SC", "Source Han Serif SC", "Noto Serif CJK SC", "STSong", "SimSun", "Songti TC", "WenQuanYi Micro Hei", serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    main { flex: 1 0 auto; }
+
+    .edge {
+      height: 10px;
+      background: var(--cinnabar);
+    }
+
+    .edge-bottom {
+      height: 2px;
+      background: var(--ink);
+    }
+
+    .sheet {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 3.25rem 4.75rem 4.25rem;
+    }
+
+    .sheet::before,
+    .sheet::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .sheet::before {
+      top: 1.35rem;
+      left: 1.75rem;
+      width: 28px;
+      height: 28px;
+      border-top: 1.5px solid var(--ink);
+      border-left: 1.5px solid var(--ink);
+    }
+
+    .sheet::after {
+      right: 1.75rem;
+      bottom: 1.35rem;
+      width: 18px;
+      height: 18px;
+      border-right: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.85rem;
+      font-family: "Noto Serif", "Iowan Old Style", Palatino, "Palatino Linotype", "Times New Roman", serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      line-height: 1.15;
+      letter-spacing: 0.2em;
+      text-indent: 0.2em;
+    }
+
+    .name {
+      margin: 0.35rem 0 0;
+      font-family: "Noto Serif", Palatino, "Times New Roman", serif;
+      font-style: italic;
+      letter-spacing: 0.04em;
+      color: var(--soft);
+    }
+
+    .lede {
+      max-width: 38rem;
+      margin: 1.75rem 0 0;
+    }
+
+    .en {
+      font-family: "Noto Serif", "Iowan Old Style", Palatino, "Palatino Linotype", "Times New Roman", serif;
+      color: var(--soft);
+    }
+
+    .lede.en { margin-top: 0.35rem; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.75rem;
+      margin: 3.25rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    figure { margin: 0; }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--ink);
+    }
+
+    figcaption { margin-top: 0.9rem; text-align: center; }
+
+    figcaption .title {
+      display: block;
+      font-size: 1.35rem;
+      letter-spacing: 0.42em;
+      text-indent: 0.42em;
+      line-height: 1.3;
+    }
+
+    figcaption .meta {
+      display: block;
+      margin-top: 0.15rem;
+      font-size: 0.92rem;
+      color: var(--soft);
+    }
+
+    figcaption .meta.en {
+      margin-top: 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.03em;
+    }
+
+    .prose {
+      max-width: 40rem;
+      margin-top: 3.25rem;
+    }
+
+    .homage {
+      margin: 0;
+      padding-left: 1rem;
+      border-left: 2px solid var(--cinnabar);
+    }
+
+    .homage.en { margin-top: 0.65rem; }
+
+    h2 {
+      margin: 2.5rem 0 0.35rem;
+      font-weight: 600;
+      font-size: 1.35rem;
+      letter-spacing: 0.14em;
+    }
+
+    .prose h2 + .en { margin: 0 0 0.85rem; }
+
+    pre {
+      margin: 0;
+      padding: 1rem 1.15rem;
+      background: var(--sheet);
+      border: 1px solid var(--ink);
+      overflow-x: auto;
+    }
+
+    code {
+      font-family: ui-monospace, "Sarasa Mono SC", "Source Han Mono", "Noto Sans Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .cycle {
+      margin: 2.5rem 0 0;
+    }
+
+    .cycle img {
+      display: block;
+      width: min(100%, 280px);
+      height: auto;
+      border: 1px solid var(--ink);
+    }
+
+    .cycle figcaption {
+      max-width: 18rem;
+      margin-top: 0.65rem;
+      text-align: left;
+      font-size: 0.92rem;
+      color: var(--soft);
+    }
+
+    .cycle figcaption .en { display: block; }
+
+    .links {
+      margin: 2.25rem 0 0;
+      font-size: 1.05rem;
+    }
+
+    .links a {
+      color: var(--cinnabar);
+      text-underline-offset: 0.18em;
+    }
+
+    .links a:hover { color: var(--ink); }
+
+    .links a:focus-visible {
+      outline: 1px solid var(--cinnabar);
+      outline-offset: 3px;
+    }
+
+    .dot { margin: 0 0.55rem; color: var(--soft); }
+
+    footer {
+      margin: 3rem 0 0;
+      font-family: "Noto Serif", Palatino, serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      color: var(--soft);
+    }
+
+    ::selection {
+      background: var(--cinnabar);
+      color: var(--sheet);
+    }
+
+    @media (max-width: 800px) {
+      .sheet { padding: 2.75rem 1.35rem 3rem; }
+      .sheet::before { left: 0.7rem; top: 0.85rem; }
+      .sheet::after { right: 0.7rem; bottom: 0.85rem; }
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+        max-width: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    GitHub Pages: Settings → Pages → Build and deployment → Deploy from a branch.
+    Branch: main. Folder: /docs.
+    This gallery is then https://gypsoo.github.io/luxun-cover-skill/demo/
+    The repository root redirects here via docs/index.html.
+  -->
+  <div class="edge" aria-hidden="true"></div>
+  <main class="sheet">
+    <p class="eyebrow">Lu Xun · Tao Yuanqing</p>
+    <h1>民国书衣</h1>
+    <p class="name">luxun-cover-skill</p>
+
+    <p class="lede">给人和编程代理用的一套书衣工具。几何纹样、暖纸、墨加一个强调色、大块余白，书名与纹样分开。</p>
+    <p class="lede en">An agent skill and a local Python generator for Republican-era Chinese book covers: geometric ornament, warm paper, ink plus one accent, and wide margins. The title stays apart from the ornament.</p>
+
+    <ul class="gallery">
+      <li>
+        <figure>
+          <img src="covers/panghuang.png" width="1280" height="1840" alt="彷徨：赭黄纸，左下窗格，直排书名。致敬构图，不是原封面。">
+          <figcaption>
+            <span class="title">彷徨</span>
+            <span class="meta">赭黄 · 窗格</span>
+            <span class="meta en">ochre · lattice</span>
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure>
+          <img src="covers/nahan.png" width="1280" height="1840" alt="呐喊：暖白纸，上端云头，横排书名。致敬构图，不是原封面。">
+          <figcaption>
+            <span class="title">呐喊</span>
+            <span class="meta">纯墨 · 云头</span>
+            <span class="meta en">ink · cloud</span>
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure>
+          <img src="covers/yecao.png" width="1280" height="1840" alt="野草：暖纸，暗蓝书口，角框纹样，直排书名。致敬构图，不是原封面。">
+          <figcaption>
+            <span class="title">野草</span>
+            <span class="meta">暗蓝 · 角框</span>
+            <span class="meta en">indigo · frame</span>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
+
+    <div class="prose">
+      <p class="homage">这些是致敬构图，不是原封面的复制，也不是陶元庆原画的临摹。《呐喊》初版封面是鲁迅自己做的，《野草》封面是孙福熙做的。这里只用这些书名，版式是新的。几何纹样在程序里算出来，SVG 的说明里留着 not a facsimile。</p>
+      <p class="homage en">Homage compositions, not facsimiles of the original covers, and not tracings of Tao Yuanqing’s paintings. The first-edition cover of 《呐喊》 was designed by Lu Xun; the cover of 《野草》 was designed by Sun Fuxi. These layouts are new. The ornaments are computed, and the SVG keeps the words “not a facsimile”.</p>
+
+      <h2>生成一张</h2>
+      <p class="en">Install, then make one cover.</p>
+      <pre><code>pip install -e .
+luxun-cover --title 彷徨 --out panghuang.svg</code></pre>
+
+      <figure class="cycle">
+        <img src="cycle.gif" width="620" height="927" alt="循环：彷徨、呐喊、野草，依次更换纹样和色板。">
+        <figcaption>
+          同一套语法，换纹样和色板。
+          <span class="en">Same grammar; the motif and palette change.</span>
+        </figcaption>
+      </figure>
+
+      <p class="links">
+        <a href="https://github.com/Gypsoo/luxun-cover-skill">仓库 <span class="en">Repository</span></a>
+        <span class="dot" aria-hidden="true">·</span>
+        <a href="https://github.com/Gypsoo/luxun-cover-skill/blob/main/SKILL.md">SKILL.md</a>
+      </p>
+
+      <footer>MIT · not a facsimile</footer>
+    </div>
+  </main>
+  <div class="edge-bottom" aria-hidden="true"></div>
+</body>
+</html>
