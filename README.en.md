@@ -5,22 +5,22 @@
 ## Demo
 
 <p align="center">
-  <img src="assets/demo/collage.png" alt="Three homage covers side by side: 彷徨 (ochre, lattice), 呐喊 (ink, cloud), and 野草 (indigo, frame). Not facsimiles of the original covers." width="840">
+  <img src="assets/demo/collage.png" alt="Left to right: 彷徨 on ochre paper with a lattice in the lower band; 呐喊 on near-white paper with cloud-heads along the top; 野草 with dull-blue bands and a corner frame." width="840">
 </p>
 
-Ochre lattice, ink cloud, indigo frame. The output is a homage layout, not a copy of an original cover.
+Left to right: 《彷徨》 on ochre paper, the lattice set into the lower band; 《呐喊》 on near-white paper, a row of cloud-heads along the top; 《野草》 with dull-blue bands and an open corner frame. Lu Xun designed the first-edition cover of 《呐喊》, Tao Yuanqing painted 《彷徨》, and Sun Fuxi painted 《野草》. The titles come from those three books. The lattice, the cloud-heads, and the corner frame are calculated in the program.
 
 ```bash
 luxun-cover --title 彷徨 --out panghuang.svg
 ```
 
 <p align="center">
-  <img src="assets/demo/cycle.gif" alt="A loop of the three covers, changing motif and palette: 彷徨, 呐喊, 野草." width="280">
+  <img src="assets/demo/cycle.gif" alt="The three covers in turn: 彷徨, then 呐喊, then 野草." width="280">
 </p>
 
-The static gallery is [`docs/demo/`](docs/demo/index.html). After Pages is enabled (Settings → Pages → **Deploy from a branch**, branch `main`, folder `/docs`), it is at <https://gypsoo.github.io/luxun-cover-skill/demo/>.
+The gallery page is [`docs/demo/`](docs/demo/index.html). On GitHub, open Settings → Pages, choose **Deploy from a branch**, branch `main`, folder `/docs`. The address is <https://gypsoo.github.io/luxun-cover-skill/demo/>.
 
-A tool for Republican-era Chinese book covers, for people and for coding agents: an agent skill, plus a local Python generator. It writes SVG in the cover grammar Tao Yuanqing set for Lu Xun’s books: geometric ornament, warm paper, ink plus one accent, wide margins, the title kept apart from the ornament. The output is a homage layout, not a copy of an original cover.
+A local command, plus a [SKILL.md](SKILL.md) for a coding agent. The command writes an SVG the size of a book: bands at the top and bottom, warm paper, ink for the characters, the ornament kept to one side.
 
 ## What this is
 

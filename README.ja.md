@@ -5,22 +5,22 @@
 ## デモ
 
 <p align="center">
-  <img src="assets/demo/collage.png" alt="三つのオマージュ書衣を並べたもの。彷徨（赭黄・窓格子）、呐喊（墨・雲頭）、野草（暗藍・角枠）。原カバーの複製ではない。" width="840">
+  <img src="assets/demo/collage.png" alt="左から、赭黄の紙に窓格子の彷徨、白い紙に雲頭の呐喊、暗い藍の書口と角枠の野草。" width="840">
 </p>
 
-赭黄の窓格子、墨の雲頭、暗藍の角枠。出力はオマージュの構図であり、原カバーの複製ではない。
+左から『彷徨』『呐喊』『野草』。『彷徨』は赭黄の紙で、窓格子が下の書口に乗る。『呐喊』は白い紙で、雲頭が上に並ぶ。『野草』は暗い藍の書口と、開いた角枠。『呐喊』の初版カバーは魯迅自身、『彷徨』は陶元慶、『野草』は孫福熙が描いた。書名はこの三冊のもの。窓格子、雲頭、角枠はプログラムが計算している。
 
 ```bash
 luxun-cover --title 彷徨 --out panghuang.svg
 ```
 
 <p align="center">
-  <img src="assets/demo/cycle.gif" alt="三枚の書衣を順に繰り返す。彷徨、呐喊、野草。文様と色板が入れ替わる。" width="280">
+  <img src="assets/demo/cycle.gif" alt="三枚が順に出る。彷徨、次に呐喊、次に野草。" width="280">
 </p>
 
-静的なギャラリーは [`docs/demo/`](docs/demo/index.html) にある。Settings → Pages で **Deploy from a branch**、ブランチ `main`、フォルダ `/docs` を選んだあと、公開先は <https://gypsoo.github.io/luxun-cover-skill/demo/> である。
+ギャラリーのページは [`docs/demo/`](docs/demo/index.html)。GitHub では Settings → Pages を開き、**Deploy from a branch**、ブランチ `main`、フォルダ `/docs` を選ぶ。アドレスは <https://gypsoo.github.io/luxun-cover-skill/demo/> である。
 
-人とプログラミング用エージェントのための、民国期の書衣（本のカバー）をつくる道具である。エージェント向けの Skill と、ローカルで動く Python の生成器からなる。魯迅の本のために陶元慶が立てたカバーの文法で SVG を書く。幾何学的な文様、暖色の紙、墨に強調色ひとつ、広い余白、書名は文様から離す。出力はオマージュの構図であり、原カバーの複製ではない。
+ローカルで動くコマンドと、エージェント向けの [SKILL.md](SKILL.md) がある。コマンドは本の寸法で SVG を書く。上下に書口、暖色の紙、字は墨、文様は片側に置く。
 
 ## これは何か
 
