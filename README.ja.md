@@ -5,17 +5,25 @@
 ## デモ
 
 <p align="center">
-  <img src="assets/demo/collage.png" alt="左から、赭黄の紙に窓格子の彷徨、白い紙に雲頭の呐喊、暗い藍の書口と角枠の野草。" width="840">
+  <img src="docs/demo/covers/originals/panghuang.jpg" alt="陶元慶が描いた1926年の彷徨カバー。" width="180">
+  <img src="docs/demo/covers/originals/nahan.jpg" alt="中国国家図書館所蔵、1930年北新書局の呐喊。カバーは魯迅のデザイン。" width="180">
+  <img src="docs/demo/covers/originals/yecao.jpg" alt="孫福熙が描いた1927年の野草カバー。" width="180">
 </p>
 
-左から『彷徨』『呐喊』『野草』。『彷徨』は赭黄の紙で、窓格子が下の書口に乗る。『呐喊』は白い紙で、雲頭が上に並ぶ。『野草』は暗い藍の書口と、開いた角枠。『呐喊』の初版カバーは魯迅自身、『彷徨』は陶元慶、『野草』は孫福熙が描いた。書名はこの三冊のもの。窓格子、雲頭、角枠はプログラムが計算している。
+原書のカバー。左から、陶元慶の『彷徨』（1926、北新書局初版）、中国国家図書館所蔵の1930年北新書局『呐喊』（カバーは魯迅のデザイン。1923年の初版は新潮社）、孫福熙の『野草』（1927）。スキャンの出典と許諾は[ギャラリー](docs/demo/index.html)に書いてある。
+
+<p align="center">
+  <img src="assets/demo/collage.png" alt="左から、赭黄の紙に窓格子の彷徨、白い紙に雲頭の呐喊、暗い藍の書口と角枠の野草。luxun-cover が描いた三枚。" width="840">
+</p>
+
+下は `luxun-cover` が描いた三枚。左から『彷徨』『呐喊』『野草』。『彷徨』は赭黄の紙で、窓格子が下の書口に乗る。『呐喊』は白い紙で、雲頭が上に並ぶ。『野草』は暗い藍の書口と、開いた角枠。書名は上の三冊のもの。窓格子、雲頭、角枠はプログラムが計算している。
 
 ```bash
 luxun-cover --title 彷徨 --out panghuang.svg
 ```
 
 <p align="center">
-  <img src="assets/demo/cycle.gif" alt="三枚が順に出る。彷徨、次に呐喊、次に野草。" width="280">
+  <img src="assets/demo/cycle.gif" alt="コマンドが描いた三枚が順に出る。彷徨、次に呐喊、次に野草。" width="280">
 </p>
 
 ギャラリーのページは [`docs/demo/`](docs/demo/index.html)。GitHub では Settings → Pages を開き、**Deploy from a branch**、ブランチ `main`、フォルダ `/docs` を選ぶ。アドレスは <https://gypsoo.github.io/luxun-cover-skill/demo/> である。

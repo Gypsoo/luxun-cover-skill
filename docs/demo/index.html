@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>民国书衣 · luxun-cover-skill</title>
-  <meta name="description" content="luxun-cover 在本地画书衣。页面上是《彷徨》《呐喊》《野草》三张，纹样用坐标算出来。">
+  <meta name="description" content="先放《彷徨》《呐喊》《野草》的原书封面，再放 luxun-cover 用这三个书名画出的三张。">
   <link rel="canonical" href="https://gypsoo.github.io/luxun-cover-skill/demo/">
   <meta property="og:title" content="民国书衣 · luxun-cover-skill">
-  <meta property="og:description" content="《彷徨》《呐喊》《野草》三张书衣，由 luxun-cover 用坐标画出。">
+  <meta property="og:description" content="原书封面在前，luxun-cover 画出的三张在后。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://gypsoo.github.io/luxun-cover-skill/demo/">
   <meta property="og:image" content="https://gypsoo.github.io/luxun-cover-skill/demo/covers/panghuang.png">
@@ -165,6 +165,27 @@
       letter-spacing: 0.03em;
     }
 
+    figcaption .credit {
+      display: block;
+      margin-top: 0.55rem;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      text-align: left;
+      color: var(--soft);
+    }
+
+    figcaption .credit a {
+      color: var(--cinnabar);
+      text-underline-offset: 0.15em;
+    }
+
+    figcaption .credit a:hover { color: var(--ink); }
+
+    .section-lead {
+      max-width: 40rem;
+      margin: 0.35rem 0 0;
+    }
+
     .prose {
       max-width: 40rem;
       margin-top: 3.25rem;
@@ -279,8 +300,52 @@
     <h1>民国书衣</h1>
     <p class="name">luxun-cover-skill</p>
 
-    <p class="lede">仓库里的命令叫 <code>luxun-cover</code>。它按一本书的尺寸写 SVG：上下留书口，纸色偏暖，字用墨。纹样占一角，书名写在空出来的地方。仓库里另有一份给编程代理看的 SKILL.md。</p>
-    <p class="lede en">The command in this repo is <code>luxun-cover</code>. It writes an SVG the size of a book: bands along the top and bottom, warm paper, ink for the characters. The ornament takes one corner, and the title sits in the space left over. SKILL.md, in the repo, is the note for a coding agent.</p>
+    <p class="lede">这个页面先放三本原书的封面，再放命令 <code>luxun-cover</code> 画出的三张。命令按一本书的尺寸写 SVG：上下留书口，纸色偏暖，字用墨。纹样占一角，书名写在空出来的地方。仓库里另有一份给编程代理看的 SKILL.md。</p>
+    <p class="lede en">The printed covers come first. The three drawn by <code>luxun-cover</code> follow. The command writes an SVG the size of a book: bands along the top and bottom, warm paper, ink for the characters. The ornament takes one corner, and the title sits in the space left over. SKILL.md, in the repo, is the note for a coding agent.</p>
+
+    <h2>历史封面</h2>
+    <p class="section-lead">三本原书的封面。画者、年份和扫描出处写在图下。</p>
+    <p class="section-lead en">The printed covers. Painter, year, and the scan credit are under each picture.</p>
+
+    <ul class="gallery">
+      <li>
+        <figure>
+          <img src="covers/originals/panghuang.jpg" width="1200" height="1715" alt="陶元庆画的彷徨封面：橙红色地，三个人并坐，对着右上的太阳，书名直排在右边。">
+          <figcaption>
+            <span class="title">彷徨</span>
+            <span class="meta">陶元庆，1926</span>
+            <span class="meta en">Tao Yuanqing, 1926</span>
+            <span class="credit">北新书局初版用过这张画。图：<a href="https://commons.wikimedia.org/wiki/File:Panghuang_bookcover.jpg">Wikimedia Commons, Panghuang bookcover.jpg</a>。北京鲁迅博物馆编《北京鲁迅博物馆藏画选》，天津人民美术出版社，1986。公有领域（PD-art，作者 1929 年去世）。<span class="en">Beixin used this picture for the 1926 first edition. Public domain.</span></span>
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure>
+          <img src="covers/originals/nahan.jpg" width="686" height="1120" alt="1930 年北新书局呐喊封面：深红地，上方一块黑，阴文呐喊二字。页面上有国家图书馆水印。">
+          <figcaption>
+            <span class="title">呐喊</span>
+            <span class="meta">鲁迅设计</span>
+            <span class="meta en">Designed by Lu Xun</span>
+            <span class="credit">这一张是国家图书馆藏本，书目作 1930 年北新书局（上海）。深红地，一块黑，阴文书名。页面上有馆藏水印。1923 年初版是新潮社出的。图：<a href="https://commons.wikimedia.org/wiki/File:NLC511-13051298-65063_%E5%90%B6%E5%96%8A.pdf">Wikimedia Commons</a> 第 1 页。公有领域（PD-China / PD-scan）。<span class="en">National Library of China copy, catalogued as Beixin, Shanghai, 1930. The 1923 first edition was issued by Xinchao She. Public domain.</span></span>
+          </figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure>
+          <img src="covers/originals/yecao.jpg" width="1200" height="1694" alt="孙福熙画的野草封面：云、远山、草，书名直排在右边。">
+          <figcaption>
+            <span class="title">野草</span>
+            <span class="meta">孙福熙，1927</span>
+            <span class="meta en">Sun Fuxi, 1927</span>
+            <span class="credit">云、远山、草。图：<a href="https://commons.wikimedia.org/wiki/File:%E3%80%8A%E9%87%8E%E8%8D%89%E3%80%8B%E7%AC%AC%E4%B8%80%E7%89%88%E5%B0%81%E9%9D%A2.jpg">Wikimedia Commons，《野草》第一版封面.jpg</a>。文件说明写来源为《野草》人民文学出版社 1973 年，许可公有领域（PD-China）。共享资源作者栏写的是周树人。<span class="en">Cloud, distant hills, grass. The Commons author field names Zhou Shuren. Public domain.</span></span>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
+
+    <h2>这条命令画出的</h2>
+    <p class="section-lead">书名用的是上面三本。窗格、云头、角框是程序里的矩形和圆弧。SVG 的 <code>&lt;desc&gt;</code> 里留着 <code>not a facsimile</code>。</p>
+    <p class="section-lead en">These use the three titles above. Lattice, cloud-head, and corner frame are rectangles and arcs in the program. The SVG <code>&lt;desc&gt;</code> keeps the words <code>not a facsimile</code>.</p>
 
     <ul class="gallery">
       <li>
@@ -288,7 +353,7 @@
           <img src="covers/panghuang.png" width="1280" height="1840" alt="彷徨：赭黄纸，窗格压在下书口，书名直排在右边。">
           <figcaption>
             <span class="title">彷徨</span>
-            <span class="meta">赭黄 · 窗格</span>
+            <span class="meta">luxun-cover · 赭黄 · 窗格</span>
             <span class="meta en">ochre · lattice</span>
           </figcaption>
         </figure>
@@ -298,7 +363,7 @@
           <img src="covers/nahan.png" width="1280" height="1840" alt="呐喊：近白的纸，上沿一排云头，书名横排在下面。">
           <figcaption>
             <span class="title">呐喊</span>
-            <span class="meta">纯墨 · 云头</span>
+            <span class="meta">luxun-cover · 纯墨 · 云头</span>
             <span class="meta en">ink · cloud</span>
           </figcaption>
         </figure>
@@ -308,7 +373,7 @@
           <img src="covers/yecao.png" width="1280" height="1840" alt="野草：暗蓝书口，纸上两只角框，书名直排在右边。">
           <figcaption>
             <span class="title">野草</span>
-            <span class="meta">暗蓝 · 角框</span>
+            <span class="meta">luxun-cover · 暗蓝 · 角框</span>
             <span class="meta en">indigo · frame</span>
           </figcaption>
         </figure>
@@ -316,19 +381,16 @@
     </ul>
 
     <div class="prose">
-      <p class="homage">1926 年《彷徨》的封面是陶元庆画的，三个人并坐，面向落日。《呐喊》1923 年初版是鲁迅自己做的，深红地，一块黑。《野草》1927 年初版是孙福熙的山水，有云、远山和草。上面三张用的是这三个书名。窗格、云头、角框是程序里的矩形和圆弧。SVG 的 <code>&lt;desc&gt;</code> 里留着 <code>not a facsimile</code> 这几个词。</p>
-      <p class="homage en">Tao Yuanqing painted the 1926 cover of 《彷徨》: three figures seated together, facing the setting sun. Lu Xun designed the 1923 《呐喊》 cover himself, a deep-red ground with one black block. Sun Fuxi’s 1927 《野草》 is a landscape of cloud, distant hills, and grass. The three pictures above use those titles. Lattice, cloud-head, and corner frame are rectangles and arcs in the program. The SVG <code>&lt;desc&gt;</code> keeps the words <code>not a facsimile</code>.</p>
-
       <h2>画一张</h2>
       <p class="en">From the repository root:</p>
       <pre><code>pip install -e .
 luxun-cover --title 彷徨 --out panghuang.svg</code></pre>
 
       <figure class="cycle">
-        <img src="cycle.gif" width="620" height="927" alt="三张轮流出现：彷徨的赭黄窗格，呐喊的云头，野草的暗蓝角框。">
+        <img src="cycle.gif" width="620" height="927" alt="命令画出的三张轮流出现：彷徨的赭黄窗格，呐喊的云头，野草的暗蓝角框。">
         <figcaption>
-          动图里依次是上面三张。
-          <span class="en">The loop steps through the three covers above.</span>
+          动图里依次是命令画出的三张。
+          <span class="en">The loop steps through the three covers drawn by the command.</span>
         </figcaption>
       </figure>
 
